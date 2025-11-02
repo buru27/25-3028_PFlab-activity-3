@@ -1,45 +1,18 @@
 #include <stdio.h>
 
 int main() {
-    int pass[10], fail[10];
-    int i, x, pcount = 0, fcount = 0;
-    float psum = 0, fsum = 0;
-
-    for (i = 0; i < 10; i++) {
-        scanf("%d", &x);
-        if (x == -1) {
-            break;
-        }
-
-        if (x >= 5 && x <= 10) {
-            pass[pcount] = x;
-            psum += x;
-            pcount++;
-        } else if (x >= 0 && x <= 5) {
-            fail[fcount] = x;
-            fsum += x;
-            fcount++;
-        }
+    int a[3][3],b[3][3],c[3][3]={0},r1,c1,r2,c2,i,j,k;
+    scanf("%d%d",&r1,&c1);
+    for(i=0;i<r1;i++)for(j=0;j<c1;j++)scanf("%d",&a[i][j]);
+    scanf("%d%d",&r2,&c2);
+    for(i=0;i<r2;i++)for(j=0;j<c2;j++)scanf("%d",&b[i][j]);
+    if(c1!=r2)printf("Invalid dimensions");
+    else{
+        for(i=0;i<r1;i++)
+            for(j=0;j<c2;j++)
+                for(k=0;k<c1;k++)
+                    c[i][j]+=a[i][k]*b[k][j];
+        for(i=0;i<r1;i++){for(j=0;j<c2;j++)printf("%d ",c[i][j]);printf("\n");}
     }
-
-    printf("Passed Marks: ");
-    for (i = 0; i < pcount; i++) {
-        printf("%d ", pass[i]);
-    }
-
-    printf("\nFailed Marks: ");
-    for (i = 0; i < fcount; i++) {
-        printf("%d ", fail[i]);
-    }
-
-    if (pcount > 0) {
-        printf("\nAverage of pass: %.2f", psum / pcount);
-    }
-
-    if (fcount > 0) {
-        printf("\nAverage of fail: %.2f", fsum / fcount);
-    }
-
-    return 0;
 }
 
