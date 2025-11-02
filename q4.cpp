@@ -1,23 +1,14 @@
 #include <stdio.h>
 
 int main() {
-    char str[100];
-    int i;
-
-    scanf("%[^\n]", str);
-
-    for (i = 0; str[i] != '\0'; i++) {
-        if (str[i] >= 'a' && str[i] <= 'z') {
-            str[i] = str[i] - 32;
-        } else if (str[i] >= 'A' && str[i] <= 'Z') {
-            str[i] = str[i] + 32;
-        }
+    int a[3][3][3],i,j,k,sum,tot=0;
+    for(i=0;i<3;i++)for(j=0;j<3;j++)for(k=0;k<3;k++)scanf("%d",&a[i][j][k]);
+    for(i=0;i<3;i++){
+        sum=0;
+        for(j=0;j<3;j++)for(k=0;k<3;k++)sum+=a[i][j][k];
+        printf("Layer %d sum = %d\n",i+1,sum);
+        tot+=sum;
     }
-
-    for (i = 0; str[i] != '\0'; i++) {
-        printf("%c", str[i]);
-    }
-
-    return 0;
+    printf("Total sum = %d\n",tot);
 }
 
